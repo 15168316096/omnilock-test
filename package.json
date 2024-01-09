@@ -36,8 +36,6 @@
     "@ckb-lumos/transaction-manager": "0.21.1",
     "@ckb-lumos/utils": "0.21.1",
     "@types/jest": "^29.5.7",
-    "@types/react": "^18.0.25",
-    "@types/react-dom": "^18.0.9",
     "pnpm": "^8.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
