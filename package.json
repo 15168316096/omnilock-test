@@ -11,7 +11,7 @@
     "build:lumos": "sh prepare_lumos.sh -x",
     "test:start": "npx ts-node scripts/start_ckb.ts",
     "test:deploy": "npx ts-node scripts/deploy_omnilock.ts",
-    "test:e2e": "parcel tests/omni-lock-metamask/index.tsx"
+    "test:e2e": "parcel tests/omni-lock-metamask/index.html"
   },
   "workspaces": [
     "./lumos/packages/*"
