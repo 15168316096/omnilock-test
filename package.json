@@ -1,16 +1,17 @@
 {
-
   "name": "omnilock-test",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
   "scripts": {
-    "build:lumos": "cd lumos && pnpm install && pnpm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:script": "sh prepare_scripts.sh -x",
+    "build:lumos": "sh prepare_lumos.sh -x",
     "test:start": "npx ts-node scripts/start_ckb.ts",
-    "test:deploy":"npx ts-node scripts/deploy_omnilock.ts",
-    "test:e2e": "jest tests/*.data.test.ts",
-    "test:stop": "npx ts-node scripts/stop.ts"
+    "test:deploy": "npx ts-node scripts/deploy_omnilock.ts",
+    "test:e2e": "parcel tests/omni-lock-metamask/index.tsx"
   },
   "workspaces": [
     "./lumos/packages/*"
@@ -29,18 +30,28 @@
     "@ckb-lumos/light-client": "0.21.1",
     "@ckb-lumos/lumos": "0.21.1",
     "@ckb-lumos/rpc": "0.21.1",
+    "@ckb-lumos/runner": "0.21.1",
     "@ckb-lumos/testkit": "0.21.1",
     "@ckb-lumos/toolkit": "0.21.1",
     "@ckb-lumos/transaction-manager": "0.21.1",
+    "@ckb-lumos/utils": "0.21.1",
+    "@types/jest": "^29.5.7",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
     "pnpm": "^8.6.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "ts-jest": "^29.1.1",
-    "ts-node": "^10.9.1",
-    "@types/jest": "^29.5.7"
+    "ts-node": "^10.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/15168316096/omnilock-test.git"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@types/jest": "^29.5.7"
-  }
+  "bugs": {
+    "url": "https://github.com/15168316096/omnilock-test/issues"
+  },
+  "homepage": "https://github.com/15168316096/omnilock-test#readme"
 }
-

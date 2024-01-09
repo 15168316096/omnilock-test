@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-perform_steps() {
+script_steps() {
     echo "Cloning repository..."
     git clone https://github.com/nervosnetwork/ckb-production-scripts
 
@@ -15,6 +15,9 @@ perform_steps() {
 
     echo "Building with Docker..."
     make all-via-docker
+
+    echo "Copy omni_lock binary"
+    cp build/omni_lock  ../source/contract/
 }
 
-perform_steps
+script_steps
