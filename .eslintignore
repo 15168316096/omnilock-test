@@ -1,0 +1,4 @@
+# .eslintignore
+
+# 忽略 node_modules 下所有文件的类型检查
+node_modules/
