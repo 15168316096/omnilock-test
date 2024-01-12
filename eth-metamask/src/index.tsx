@@ -3,8 +3,11 @@ import { helpers, Script, config, commons } from "@ckb-lumos/lumos";
 import ReactDOM from "react-dom";
 import { asyncSleep, capacityOf, ethereum, transfer } from "./lib";
 
+const cfg = JSON.parse(JSON.stringify(config.predefined.AGGRON4));
+cfg.SCRIPTS.OMNILOCK.TX_HASH =
+    "0xff234bf2fb0ad2ab5b356ceda317d3dee3efb2c55b9427ef55d9dcbf6eecbf9f";
 // use testnet config
-config.initializeConfig(config.predefined.AGGRON4);
+config.initializeConfig(cfg);
 
 export function App() {
     const [ethAddr, setEthAddr] = useState("");
