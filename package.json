@@ -10,7 +10,9 @@
     "build:script": "sh prepare_scripts.sh -x",
     "build:lumos": "sh prepare_lumos.sh -x",
     "node:start": "npx ts-node scripts/start_ckb.ts",
-    "contract:deploy": "npx ts-node scripts/deploy_omnilock.ts"
+    "contract:deploy": "npx ts-node scripts/deploy_omnilock.ts",
+    "e2e:testeth": "chmod +x e2e-test.sh && ./e2e-test.sh eth-metamask",
+    "e2e:testbitcoin": "chmod +x e2e-test.sh && ./e2e-test.sh bitcoin-unisat"
   },
   "workspaces": [
     "./lumos/packages/*"

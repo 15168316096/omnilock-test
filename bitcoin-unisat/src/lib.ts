@@ -1,25 +1,18 @@
 import { BI, Cell, helpers, Indexer, RPC, config, commons } from "../../lumos/packages/lumos";
+import { omnilock } from "../../lumos/packages/lumos/common-scripts";
 import { blockchain, bytify, hexify } from "../../lumos/packages/lumos/codec";
 
-const CKB_RPC_URL = "https://testnet.ckb.dev/rpc";
+const CKB_RPC_URL = "https://testnet.ckb.dev";
 const rpc = new RPC(CKB_RPC_URL);
 const indexer = new Indexer(CKB_RPC_URL);
-// prettier-ignore
-interface EthereumRpc {
-    (payload: { method: 'personal_sign'; params: [string /*from*/, string /*message*/] }): Promise<string>;
+
+declare global {
+    interface Window {
+        unisat: omnilock.bitcoin.Provider;
+    }
 }
 
-// prettier-ignore
-export interface EthereumProvider {
-    selectedAddress: string;
-    isMetaMask?: boolean;
-    enable: () => Promise<string[]>;
-    addListener: (event: 'accountsChanged', listener: (addresses: string[]) => void) => void;
-    removeEventListener: (event: 'accountsChanged', listener: (addresses: string[]) => void) => void;
-    request: EthereumRpc;
-}
-// @ts-ignore
-export const ethereum = window.ethereum as EthereumProvider;
+export const unisat = window.unisat;
 
 export function asyncSleep(ms: number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -45,7 +38,7 @@ export async function transfer(options: Options): Promise<string> {
     const toScript = helpers.parseAddress(options.to);
 
     // additional 0.001 ckb for tx fee
-    // the tx fee could calculated by tx size
+    // the tx fee could calculate by tx size
     // this is just a simple example
     const neededCapacity = BI.from(options.amount).add(100000);
     let collectedSum = BI.from(0);
@@ -108,16 +101,7 @@ export async function transfer(options: Options): Promise<string> {
     }
 
     tx = commons.omnilock.prepareSigningEntries(tx, { config: CONFIG });
-    let prefix = "CKB transaction: ";
-    console.log(`message content:${tx.signingEntries.get(0).message}`)
-    let signedMessage = await ethereum.request({
-        method: "personal_sign",
-        params: [ethereum.selectedAddress, prefix + tx.signingEntries.get(0).message],
-    });
-
-    let v = Number.parseInt(signedMessage.slice(-2), 16);
-    if (v >= 27) v -= 27;
-    signedMessage = "0x" + signedMessage.slice(2, -2) + v.toString(16).padStart(2, "0");
+    const signedMessage = await omnilock.bitcoin.signMessage(tx.signingEntries.get(0).message, "ecdsa", window.unisat);
 
     const signedWitness = hexify(
         blockchain.WitnessArgs.pack({

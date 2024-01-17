@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, StrictMode } from "react";
 import { helpers, Script, config, commons } from "../../lumos/packages/lumos";
-import ReactDOM from "react-dom";
-import { asyncSleep, capacityOf, ethereum, transfer } from "./lib";
+import {createRoot} from "react-dom/client";
+import { asyncSleep, capacityOf, unisat, transfer } from "./lib";
 
 const cfg = JSON.parse(JSON.stringify(config.predefined.AGGRON4));
 cfg.SCRIPTS.OMNILOCK.TX_HASH =
@@ -9,8 +9,8 @@ cfg.SCRIPTS.OMNILOCK.TX_HASH =
 // use testnet config
 config.initializeConfig(cfg);
 
-export function App() {
-    const [ethAddr, setEthAddr] = useState("");
+const App: React.FC = () => {
+    const [bitcoinAddr, setBitcoinAddr] = useState("");
     const [omniAddr, setOmniAddr] = useState("");
     const [omniLock, setOmniLock] = useState<Script>();
     const [balance, setBalance] = useState("-");
@@ -22,21 +22,22 @@ export function App() {
     const [txHash, setTxHash] = useState("");
 
     useEffect(() => {
-        asyncSleep(100).then(() => {
-            if (ethereum.selectedAddress) connectToMetaMask();
-            ethereum.addListener("accountsChanged", connectToMetaMask);
+        asyncSleep(300).then(() => {
+            if (unisat) connectToWallet();
         });
     }, []);
 
-    function connectToMetaMask() {
-        ethereum
-            .enable()
-            .then(([ethAddr]: string[]) => {
-                const omniLockScript = commons.omnilock.createOmnilockScript({ auth: { flag: "ETHEREUM_DISPLAY", content: ethAddr } });
+    function connectToWallet() {
+        unisat
+            .requestAccounts()
+            .then(([bitcoinAddr]: string[]) => {
+                const omniLockScript = commons.omnilock.createOmnilockScript({
+                    auth: { flag: "BITCOIN", address: bitcoinAddr },
+                });
 
                 const omniAddr = helpers.encodeToAddress(omniLockScript);
 
-                setEthAddr(ethAddr);
+                setBitcoinAddr(bitcoinAddr);
                 setOmniAddr(omniAddr);
                 setOmniLock(omniLockScript);
 
@@ -59,13 +60,13 @@ export function App() {
             .finally(() => setIsSendingTx(false));
     }
 
-    if (!ethereum) return <div>MetaMask is not installed</div>;
-    if (!ethAddr) return <button onClick={connectToMetaMask}>Connect to MetaMask</button>;
+    if (!unisat) return <div>UniSat is not installed</div>;
+    if (!bitcoinAddr) return <button onClick={connectToWallet}>Connect to UniSat</button>;
 
     return (
         <div>
             <ul>
-                <li>Ethereum Address: {ethAddr}</li>
+                <li>Bitcoin Address: {bitcoinAddr}</li>
                 <li>Nervos Address(Omni): {omniAddr}</li>
                 <li>
                     Current Omni lock script:
@@ -91,7 +92,13 @@ export function App() {
             </div>
         </div>
     );
-}
+};
 
-const app = document.getElementById("root");
-ReactDOM.render(<App />, app);
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(
+    <StrictMode>
+        <App />
+    </StrictMode>
+);

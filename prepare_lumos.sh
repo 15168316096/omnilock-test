@@ -3,7 +3,7 @@
 set -e
 
 lumos_steps() {
-  git clone https://github.com/ckb-js/lumos.git
+  git clone -b omnilock-bitcoin-auth https://github.com/15168316096/lumos.git
   cd lumos && npm install -g pnpm && pnpm install && pnpm run build
 }
 
