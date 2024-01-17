@@ -13,7 +13,7 @@ npm run build:lumos
 
 # Start Node
 npm run node:start
-# Description: Start CKB node using `npx ts-node scripts/start_ckb.ts`.
+# Description: Start CKB node on devnet using `npx ts-node scripts/start_ckb.ts`.
 
 # Deploy Contract
 npm run contract:deploy
