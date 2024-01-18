@@ -1,7 +1,7 @@
 import { spawn, execSync } from "node:child_process";
 import { join } from "node:path";
 import { mkdirSync, rmSync } from "node:fs";
-import {replaceContentSync, retry} from "@ckb-lumos/utils";
+import {replaceContentSync, retry} from "../lumos/packages/utils";
 import { RPC } from "@ckb-lumos/rpc";
 import killPort from "kill-port";
 import {
