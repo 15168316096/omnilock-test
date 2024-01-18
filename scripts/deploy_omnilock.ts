@@ -25,11 +25,12 @@ async function main() {
         }
     ]
     for (let i = 0; i < deployContractList.length; i++) {
-        let account = randomSecp256k1Account()
-        await e2eProvider.claimCKB({
-            claimer: account.lockScript,
-            amount: BI.from(500000 * 10 ** 8)
-        })
+        let account = randomSecp256k1Account("0xd00c06bfd800d27397002dca6fb0993d5ba6399b4238b2f29ee9deb97593d2bc")
+        console.log(`acc lock script:${JSON.stringify(account.lockScript)}`)
+        // await e2eProvider.claimCKB({
+        //     claimer: account.lockScript,
+        //     amount: BI.from(500000 * 10 ** 8)
+        // })
         let deployContract = deployContractList[i]
         // @ts-ignore
         let tx = await e2eProvider.deployContract({

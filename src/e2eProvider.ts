@@ -296,6 +296,7 @@ export class E2EProvider {
 
     txSkeleton = common.prepareSigningEntries(txSkeleton);
     const message = txSkeleton.get("signingEntries").get(0)?.message;
+    console.log(`message:${message}`);
     const Sig = key.signRecoverable(message!, from.privKey);
     const tx = sealTransaction(txSkeleton, [Sig]);
 
