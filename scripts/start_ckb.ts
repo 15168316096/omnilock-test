@@ -33,7 +33,7 @@ async function main() {
   mkdirSync(CKB_CWD, { recursive: true });
   mkdirSync(LIGHT_CLIENT_CWD, { recursive: true });
   console.log("get download url ")
-  const ckbReleaseUrl = ckb.getReleaseUrl({ version: "v0.113.0-rc3" });
+  const ckbReleaseUrl = ckb.getReleaseUrl({ version: "v0.112.1" });
   const ckbDownloadDest = getDefaultDownloadDestination(ckbReleaseUrl);
   let ckbBinaryPath = ckb.findBinaryPath(ckbDownloadDest);
   console.log("download ckb:",ckbReleaseUrl)

@@ -1,6 +1,6 @@
 import {initializeConfig, predefined} from "@ckb-lumos/config-manager";
 
-export const CKB_HOST = "localhost";
+export const CKB_HOST = "127.0.0.1";
 export const CKB_RPC_PORT = 8114;
 
 // export const GITPOD_CKB_RPC_URL = "https://8114-15168316096-omnilocktes-d93wy5i023o.ws-us107.gitpod.io";
