@@ -1,6 +1,7 @@
 import {RPC} from "@ckb-lumos/rpc";
 import {Indexer} from "@ckb-lumos/ckb-indexer";
-import {FileFaucetQueue} from "@ckb-lumos/e2e-test/src/faucetQueue";
+// import {FileFaucetQueue} from "@ckb-lumos/e2e-test/src/faucetQueue";
+import {FileFaucetQueue} from "../lumos/packages/e2e-test/src/faucetQueue";
 import {CKB_MAIN_NET_RPC_URL, CKB_RPC_URL, CKB_TEST_NET_RPC_URL} from "./constants";
 import {E2EProvider} from "./e2eProvider";
 

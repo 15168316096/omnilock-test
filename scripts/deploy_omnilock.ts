@@ -19,8 +19,8 @@ async function main() {
     const deployAccount = randomSecp256k1Account(GENESIS_CELL_PRIVATEKEYS[1]);
     let deployContractList = [
         {
-            contractName: "OMNI_LOCK",
-            contractPath: "source/contracts/omni_lock"
+            contractName: "OMNILOCK",
+            contractPath: "source/contracts/omnilock"
         }
     ]
     for (let i = 0; i < deployContractList.length; i++) {
