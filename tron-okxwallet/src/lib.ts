@@ -23,6 +23,7 @@ export const tron =  window.okxwallet.tronLink as Provider;
 
 export async function getAccount():Promise<string> {
     await tron.connect;
+    // @ts-ignore
     return tron.tronWeb.defaultAddress.base58;
 }
 

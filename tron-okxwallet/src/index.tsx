@@ -4,8 +4,7 @@ import {createRoot} from "react-dom/client";
 import {asyncSleep, capacityOf, transfer, tron, getAccount} from "./lib";
 
 const cfg = JSON.parse(JSON.stringify(config.predefined.AGGRON4));
-cfg.SCRIPTS.OMNILOCK.CODE_HASH ="0xe004391c16b67df98f66cda6cc779ab7c56fb78744ec935862e8e06555ddd1c0";
-cfg.SCRIPTS.OMNILOCK.TX_HASH = "0x7fe38dc4b416eddc3f2fa0f75133da8082bd893df04823033d16f53eb8bc6c90";
+cfg.SCRIPTS.OMNILOCK.TX_HASH = "0xea97325b155558098012a7a2db2638d7e6c43706cd83d7ef44b83583bdd23f44";
 config.initializeConfig(cfg);
 
 const App: React.FC = () => {
