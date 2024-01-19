@@ -20,7 +20,7 @@ async function main() {
     let deployContractList = [
         {
             contractName: "OMNILOCK",
-            contractPath: "source/contracts/omnilock"
+            contractPath: "source/contracts/omni_lock3"
         }
     ]
     for (let i = 0; i < deployContractList.length; i++) {
