@@ -140,7 +140,7 @@ export async function transfer(options: Options): Promise<string> {
     }
 
     tx = commons.omnilock.prepareSigningEntries(tx, { config: CONFIG });
-    console.log(`+++${tx.signingEntries.get(0).message}`)
+    console.log(`message:${tx.signingEntries.get(0).message}`)
     let result = await signMessage(tx.signingEntries.get(0).message);
     // let v = Number.parseInt(result.slice(-2), 16);
     // if (v >= 27) v -= 27;
@@ -157,7 +157,7 @@ export async function transfer(options: Options): Promise<string> {
             }),
         })
     );
-    console.log(`+++++${signedWitness}`);
+    console.log(`wintness:${signedWitness}`);
 
     tx = tx.update("witnesses", (witnesses) => witnesses.set(0, signedWitness));
 
