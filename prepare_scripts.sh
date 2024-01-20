@@ -3,12 +3,12 @@
 set -e
 script_steps() {
     echo "Cloning repository..."
-    git clone https://github.com/nervosnetwork/ckb-production-scripts
+    git clone https://github.com/XuJiandong/omnilock.git
 
-    cd ckb-production-scripts || exit 1
+    cd omnilock || exit 1
 
     echo "Checking out specific commit..."
-    git checkout 9785769ded9404985531925d66043320af71adbf
+    git checkout migrate-pr
 
     echo "Updating submodules..."
     git submodule update --init --recursive
@@ -17,7 +17,7 @@ script_steps() {
     make all-via-docker
 
     echo "Copy omni_lock binary"
-    cp build/omni_lock  ../source/contract/
+    cp build/omni_lock  ../source/contracts/
 }
 
 script_steps

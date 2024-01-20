@@ -1,11 +1,14 @@
 import { BI, Cell, helpers, Indexer, RPC, config, commons } from "../../lumos/packages/lumos";
 import { omnilock } from "../../lumos/packages/lumos/common-scripts";
 import { blockchain, bytify, hexify } from "../../lumos/packages/lumos/codec";
+import { CONFIG } from ".";
 
-const CKB_RPC_URL = "https://testnet.ckb.dev";
+// const CKB_RPC_URL = "https://testnet.ckb.dev";
+const CKB_RPC_URL = "http://127.0.0.1:8128";
 const rpc = new RPC(CKB_RPC_URL);
 const indexer = new Indexer(CKB_RPC_URL);
 
+//todo account request
 declare global {
     interface Window {
         unisat: omnilock.bitcoin.Provider;
@@ -32,7 +35,7 @@ const SECP_SIGNATURE_PLACEHOLDER = hexify(
 );
 
 export async function transfer(options: Options): Promise<string> {
-    const CONFIG = config.getConfig();
+    // const CONFIG = config.getConfig();
     let tx = helpers.TransactionSkeleton({});
     const fromScript = helpers.parseAddress(options.from);
     const toScript = helpers.parseAddress(options.to);

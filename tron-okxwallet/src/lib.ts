@@ -1,9 +1,8 @@
-import { CONFIG } from ".";
-import {BI, Cell, commons, helpers, Indexer, RPC} from "../../lumos/packages/lumos";
+import {BI, Cell, commons, helpers, Indexer, RPC, config} from "../../lumos/packages/lumos";
 import {blockchain, bytes, bytify, hexify} from "../../lumos/packages/lumos/codec";
 
-// const CKB_RPC_URL = "https://testnet.ckb.dev/rpc";
-const CKB_RPC_URL = "http://127.0.0.1:8128";
+const CKB_RPC_URL = "https://testnet.ckb.dev/rpc";
+// const CKB_RPC_URL = "http://127.0.0.1:8128";
 const rpc = new RPC(CKB_RPC_URL);
 const indexer = new Indexer(CKB_RPC_URL);
 
@@ -22,7 +21,7 @@ export interface Provider {
 export const tron =  window.okxwallet.tronLink as Provider;
 
 export async function getAccount():Promise<string> {
-    await tron.connect;
+    await tron.connect; //todo 账户授权认证，window.okxwallet.tronLink.request({ method: 'tron_requestAccounts'})
     // @ts-ignore
     return tron.tronWeb.defaultAddress.base58;
 }
@@ -71,7 +70,7 @@ const SECP_SIGNATURE_PLACEHOLDER = hexify(
 );
 
 export async function transfer(options: Options): Promise<string> {
-    // const CONFIG = config.getConfig();
+    const CONFIG = config.getConfig();
     let tx = helpers.TransactionSkeleton({});
     const fromScript = helpers.parseAddress(options.from);
     const toScript = helpers.parseAddress(options.to);
@@ -145,10 +144,7 @@ export async function transfer(options: Options): Promise<string> {
     console.log(`signed message:${result}`);
     let v = Number.parseInt(result.slice(-2), 16);
     if (v >= 27) v -= 27;
-    result =
-      '0x' +
-      result.slice(2, -2) +
-      v.toString(16).padStart(2, '0');
+    result = result.slice(0, -2) + v.toString(16).padStart(2, '0');
 
     const signedWitness = hexify(
         blockchain.WitnessArgs.pack({
