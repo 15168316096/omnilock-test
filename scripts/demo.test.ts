@@ -13,11 +13,11 @@ describe('Demo', function () {
 
 });
 
-curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d'{
-    "id": 42,
-    "jsonrpc": "2.0",
-    "method": "get_transaction",
-    "params": [
-      "0x4bef2c93a613420243f6a316445c93db5ceaf587236f159bc0f5f6f4d9f9675e"
-    ]
-  }' http://127.0.0.1:8128
+// curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d'{
+//     "id": 42,
+//     "jsonrpc": "2.0",
+//     "method": "get_transaction",
+//     "params": [
+//       "0x4bef2c93a613420243f6a316445c93db5ceaf587236f159bc0f5f6f4d9f9675e"
+//     ]
+//   }' http://127.0.0.1:8128
