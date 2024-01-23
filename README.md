@@ -24,5 +24,13 @@ npm run e2e:testeth
 # Description: Run end-to-end tests for Ethereum with MetaMask using `e2e-test.sh`.
 
 # End-to-End Test for Bitcoin
-npm run e2e:testbitcoin
+npm run e2e:testbitcoin-unisat
 # Description: Run end-to-end tests for Bitcoin with Unisat using `e2e-test.sh`.
+
+# End-to-End Test for Bitcoin
+npm run e2e:testbitcoin-okxwallet
+# Description: Run end-to-end tests for Bitcoin with Okxwallet using `e2e-test.sh`.
+
+# End-to-End Test for Bitcoin
+npm run e2e:testtron-okxwallet
+# Description: Run end-to-end tests for Tron with Okxwallet using `e2e-test.sh`.

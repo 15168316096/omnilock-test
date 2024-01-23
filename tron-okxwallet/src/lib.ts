@@ -1,10 +1,12 @@
 import {BI, Cell, commons, helpers, Indexer, RPC, config} from "../../lumos/packages/lumos";
 import {blockchain, bytes, bytify, hexify} from "../../lumos/packages/lumos/codec";
+import {CONFIG} from ".";
 
-const CKB_RPC_URL = "https://testnet.ckb.dev/rpc";
-// const CKB_RPC_URL = "http://127.0.0.1:8128";
-const rpc = new RPC(CKB_RPC_URL);
-const indexer = new Indexer(CKB_RPC_URL);
+// const CKB_RPC_URL_TestNet = "https://testnet.ckb.dev";
+const CKB_RPC_URL_MainNet = "https://mainnet.ckb.dev/";
+// const CKB_RPC_URL_DevNet = "http://127.0.0.1:8128";
+const rpc = new RPC(CKB_RPC_URL_MainNet);
+const indexer = new Indexer(CKB_RPC_URL_MainNet);
 
 // prettier-ignore
 interface TronRpc {
@@ -70,7 +72,7 @@ const SECP_SIGNATURE_PLACEHOLDER = hexify(
 );
 
 export async function transfer(options: Options): Promise<string> {
-    const CONFIG = config.getConfig();
+    // const CONFIG = config.getConfig();
     let tx = helpers.TransactionSkeleton({});
     const fromScript = helpers.parseAddress(options.from);
     const toScript = helpers.parseAddress(options.to);

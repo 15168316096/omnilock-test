@@ -5,7 +5,7 @@ import { randomSecp256k1Account} from "../src/utils";
 
 describe('Demo', function () {
    
-    it("account deposit", async () => {
+    it.skip("account deposit", async () => {
         let alice = "ckt1qqqtutmp28zrn3um5stwsv0jezcq762k575cz9wwre4zrlr5yz3xxqgymutf09y5vvhckx2darryt2m6xlv686kdqq20q247";
         await e2eProvider.claimCKB({claimer: alice, amount: BI.from(300000 * 10 ** 8)});
         console.log(`bob:${randomSecp256k1Account().address}`)

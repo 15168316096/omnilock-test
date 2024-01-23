@@ -3,10 +3,11 @@ import { omnilock } from "../../lumos/packages/lumos/common-scripts";
 import { blockchain, bytify, hexify } from "../../lumos/packages/lumos/codec";
 import { CONFIG } from ".";
 
-// const CKB_RPC_URL = "https://testnet.ckb.dev";
-const CKB_RPC_URL = "http://127.0.0.1:8128";
-const rpc = new RPC(CKB_RPC_URL);
-const indexer = new Indexer(CKB_RPC_URL);
+// const CKB_RPC_URL_TestNet = "https://testnet.ckb.dev";
+const CKB_RPC_URL_MainNet = "https://mainnet.ckb.dev/";
+// const CKB_RPC_URL_DevNet = "http://127.0.0.1:8128";
+const rpc = new RPC(CKB_RPC_URL_MainNet);
+const indexer = new Indexer(CKB_RPC_URL_MainNet);
 
 //todo account request
 declare global {
