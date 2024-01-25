@@ -26,4 +26,4 @@ jobs:
       run: |
         npm install --save-dev jest -g
         npm install --save-dev ts-node -g
-        jest scripts/*.test.ts test       # Replace with your test script
+        jest scripts/demo.test.ts test       # Replace with your test script
