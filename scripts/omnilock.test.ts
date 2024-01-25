@@ -1,10 +1,5 @@
-import {e2eProvider} from "../src/config";
-import {BI} from "@ckb-lumos/bi";
-import { randomSecp256k1Account} from "../src/utils";
-import { helpers, Script, commons } from "../lumos/packages/lumos";
-import {capacityOf, transfer} from "./lib";
-
-import {config} from  "../lumos/packages/lumos";
+import { helpers, commons, config } from "@ckb-lumos/lumos";
+import { transfer } from "./lib";
 
 export const CONFIG = JSON.parse(JSON.stringify(config.predefined.LINA));
 // CONFIG.SCRIPTS.OMNILOCK.TX_HASH = "0xb50ef6f2e9138f4dbca7d5280e10d29c1a65e60e8a574c009a2fa4e4107e0750";
