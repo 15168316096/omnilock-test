@@ -24,5 +24,4 @@ jobs:
 
     - name: Build and test
       run: |
-        npm run build  # Replace with your build script
         jest scripts/*.test.ts test       # Replace with your test script
