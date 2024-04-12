@@ -14,7 +14,8 @@
     "e2e:testeth": "chmod +x e2e-test.sh && ./e2e-test.sh eth-metamask",
     "e2e:testbitcoin-unisat": "chmod +x e2e-test.sh && ./e2e-test.sh bitcoin-unisat",
     "e2e:testbitcoin-okxwallet": "chmod +x e2e-test.sh && ./e2e-test.sh bitcoin-okxwallet",
-    "e2e:testtron-okxwallet": "chmod +x e2e-test.sh && ./e2e-test.sh tron-okxwallet"
+    "e2e:testtron-okxwallet": "chmod +x e2e-test.sh && ./e2e-test.sh tron-okxwallet",
+    "e2e:sol-phantom": "chmod +x e2e-test.sh && ./e2e-test.sh sol-phantom"
   },
   "workspaces": [
     "./lumos/packages/*"

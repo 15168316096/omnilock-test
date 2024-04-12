@@ -31,6 +31,10 @@ npm run e2e:testbitcoin-unisat
 npm run e2e:testbitcoin-okxwallet
 # Description: Run end-to-end tests for Bitcoin with Okxwallet using `e2e-test.sh`.
 
-# End-to-End Test for Bitcoin
+# End-to-End Test for Tron
 npm run e2e:testtron-okxwallet
 # Description: Run end-to-end tests for Tron with Okxwallet using `e2e-test.sh`.
+
+# End-to-End Test for solana
+npm run e2e:sol-phantom
+# Description: Run end-to-end tests for Solana with Phantom using `e2e-test.sh`.
